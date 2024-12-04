@@ -8,7 +8,9 @@ import java.net.Socket;
 import com.destaxa.api.exception.PaymentTimeoutException;
 import com.destaxa.api.infrastructure.protocol.ISO8583Request0200;
 import com.destaxa.api.infrastructure.protocol.ISO8583Response0210;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PaymentSocket {
 
     private static final String HOST = "localhost";
