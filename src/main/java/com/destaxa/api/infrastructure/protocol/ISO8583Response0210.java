@@ -1,6 +1,8 @@
 package com.destaxa.api.infrastructure.protocol;
 
-public class ISO8583Response0210 extends ISO8583 {
+import java.io.Serializable;
+
+public class ISO8583Response0210 extends ISO8583 implements Serializable {
 
 	private String nsuHost;
 	private String codigoAutorizacao;

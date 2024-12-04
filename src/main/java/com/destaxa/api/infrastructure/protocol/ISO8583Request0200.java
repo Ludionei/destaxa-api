@@ -1,6 +1,8 @@
 package com.destaxa.api.infrastructure.protocol;
 
-public class ISO8583Request0200 extends ISO8583 {
+import java.io.Serializable;
+
+public class ISO8583Request0200 extends ISO8583 implements Serializable {
 
 	private String numeroCartao;
 	private String codigoProcessamento;
