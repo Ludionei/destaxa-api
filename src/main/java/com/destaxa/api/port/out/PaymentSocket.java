@@ -17,22 +17,20 @@ public class PaymentSocket {
     private static final int PORT = 12345;
 
     public ISO8583Response0210 sendPaymentRequest(ISO8583Request0200 isoRequest) {
-    	
-    	System.out.println("---PaymentSocket-ISO8583Request0200---------------" + isoRequest.getValorTransacao() + "----------PaymentSocket-ISO8583Request0200------------------");
-    	
+
         ISO8583Response0210 isoResponse = null;
         
-        try (Socket socket = new Socket(HOST, PORT);
-             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-             ObjectInputStream in = new ObjectInputStream(socket.getInputStream())) {
+        try {
+
+            Socket socket = new Socket(HOST, PORT);
 
             // Enviando a solicitação de pagamento
+            ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
             out.writeObject(isoRequest);
 
             // Recebendo a resposta
+            ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
             isoResponse = (ISO8583Response0210) in.readObject();
-            
-            System.out.println("---PaymentSocket-ISO8583Response0210---------------" + isoResponse.getCodigoResposta() + "----------PaymentSocket-ISO8583Response0210------------------");
 
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
